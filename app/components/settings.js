@@ -47,4 +47,8 @@ export default class Settings{
         Server.log('Update Settings', this.settings);
     }
 
+    static get(){
+        return Store.get('settings');
+    }
+
 }

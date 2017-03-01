@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {AppRegistry, StyleSheet, Text, View, Dimensions, TouchableHighlight} from 'react-native';
 import Settings from './settings';
-import Store from './store';
 
 export default class HomeQuickSettings extends Component {
 
@@ -12,7 +11,7 @@ export default class HomeQuickSettings extends Component {
         }
 
 
-        Store.get('settings').then(v => this.setState({settings: v}));
+        Settings.get().then(v => (v ? this.setState({settings: v}) : null));
 
     }
     updateSetting(category){

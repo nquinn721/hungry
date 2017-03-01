@@ -6,12 +6,23 @@ import {
     View,
     Button,
     Navigator,
+    Menu,
     StatusBar,
     TouchableHighlight
 } from 'react-native';
 import Home from './app/components/home';
 import MainMenu from './app/components/mainMenu';
 import SideMenu from 'react-native-side-menu';
+
+class Menu extends Component{
+    render(){
+        return(
+            <View>
+                <Text>Menu</Text>
+            </View>
+        );
+    }
+}
 
 export default class Hungry extends Component {
     navigate(route, navigator){

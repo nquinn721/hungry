@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {AppRegistry, StyleSheet, Text, Image, View, ListView, Animated, TouchableHighlight} from 'react-native';
 import HomeQuickSettings from './homeQuickSettings';
 import Header from './header';
-import Settings from './settings';
+import Settings from './lib/settings';
 
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});

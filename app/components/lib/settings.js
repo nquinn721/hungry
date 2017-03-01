@@ -48,7 +48,7 @@ export default class Settings{
     }
 
     static get(){
-        return Store.get('settings');
+        return Store.get('settings').then(v => this.settings = v);
     }
 
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {AppRegistry, StyleSheet, Text, View, Dimensions, TouchableHighlight} from 'react-native';
-import Settings from './settings';
+import Settings from './lib/settings';
 
 export default class HomeQuickSettings extends Component {
 

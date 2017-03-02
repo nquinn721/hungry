@@ -17,6 +17,10 @@ export default class Settings{
             current: 'Breakfast',
             list: ['Breakfast', 'Lunch', 'Dinner', 'Late Night']
         },
+        event: {
+            current: 'Daily',
+            list: ['Daily', 'Work Wednesday']
+        },
         customMealCategories: [],
         foodInterests: ['spanish', 'italian', 'american', 'indian', 'chinese', 'japanese']
     }
@@ -24,6 +28,7 @@ export default class Settings{
 
 
     static getNext(category){
+        console.log(category);
         let cat = this.settings[category];
         let list = cat.list;
         let current = cat.current;
@@ -48,7 +53,7 @@ export default class Settings{
     }
 
     static get(){
-        return Store.get('settings').then(v => this.settings = v);
+        return Store.get('settings').then(v => Object.assign(this.settings, v));
     }
 
 }

@@ -17,15 +17,21 @@ export default class SubHeader extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TouchableHighlight onPress={this.changeScene.bind(this, 'Shake')}>
-                    <Text style={styles.listItem}>Shake</Text>
-                </TouchableHighlight>
-                <TouchableHighlight onPress={this.changeScene.bind(this, 'Restaurants')}>
-                    <Text style={styles.listItem}>Restaurants</Text>
-                </TouchableHighlight>
-                <TouchableHighlight onPress={this.changeScene.bind(this, 'Feedback')}>
-                    <Text style={styles.listItem}>FeedBack</Text>
-                </TouchableHighlight>
+                <View style={styles.menuItem}>
+                    <TouchableHighlight onPress={this.changeScene.bind(this, 'Shake')}>
+                        <Text style={styles.listItem}>Shake</Text>
+                    </TouchableHighlight>
+                </View>
+                <View style={styles.menuItem}>
+                    <TouchableHighlight onPress={this.changeScene.bind(this, 'Restaurants')}>
+                        <Text style={styles.listItem}>Restaurants</Text>
+                    </TouchableHighlight>
+                </View>
+                <View style={styles.menuItem}>
+                    <TouchableHighlight onPress={this.changeScene.bind(this, 'Feedback')}>
+                        <Text style={styles.listItem}>FeedBack</Text>
+                    </TouchableHighlight>
+                </View>
             </View>
         );
     }
@@ -36,12 +42,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        padding: 10,
         backgroundColor: '#333'
     //
     },
     listItem: {
-        color: 'white'
+        color: 'white',
+    },
+    menuItem: {
+        padding: 10,
+        borderWidth: 3,
+        borderColor: '#d35400'
     }
 });
 AppRegistry.registerComponent('SubHeader', () => SubHeader);

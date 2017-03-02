@@ -21,7 +21,11 @@ export default class HomeQuickSettings extends Component {
     render() {
         return (
             <View style={styles.setPosition}>
-
+                <TouchableHighlight onPress={this.updateSetting.bind(this, 'event')}>
+                    <View style={styles.miniSettingButton}>
+                        <Text style={styles.text}>{this.state.settings.event.current}</Text>
+                    </View>
+                </TouchableHighlight>
                 <TouchableHighlight onPress={this.updateSetting.bind(this, 'mealTime')}>
                     <View style={styles.miniSettingButton}>
                         <Text style={styles.text}>{this.state.settings.mealTime.current} min</Text>

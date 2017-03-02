@@ -8,7 +8,7 @@ export default class Restaurants extends Component {
         super();
 
         this.state = {
-            yelpData: ds.cloneWithRows([]),
+            renderedData: <Text>Render</Text>
 
         }
 
@@ -23,26 +23,22 @@ export default class Restaurants extends Component {
         });
     }
     renderYelpList(data, i){
-        return(
-            <View style={styles.item} key={i}>
-                <Image
-                    style={{width: 50, height: 50}}
-                    source={{uri: data.image_url}}
-                />
-                <Text style={styles.title}>{data.name}</Text>
-            </View>
-        );
+        // return(
+        //     <View style={styles.item}>
+        //         <Image
+        //             style={{width: 50, height: 50}}
+        //             source={{uri: data.image_url}}
+        //         />
+        //         <Text style={styles.title}>{data.name}</Text>
+        //     </View>
+        // );
     }
 
-    getList(){
-
-    }
     render(){
         return (
-            <ListView
-            dataSource={this.state.yelpData}
-            renderRow={this.renderYelpList.bind(this)}
-            />
+            <View>
+                {this.state.renderedData}
+            </View>
         )
     }
 }

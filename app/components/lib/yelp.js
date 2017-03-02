@@ -10,11 +10,11 @@ const oauth = new OAuthSimple(consumerKey, tokenSecret);
 import Location from './location';
 
 export default class YelpAPI{
-    search(cb){
+    static search(cb){
         Location.get(position => this.requestYelp(position, cb));
     }
 
-    requestYelp(pos, cb){
+    static requestYelp(pos, cb){
         let lat = pos.coords.latitude
         let lng = pos.coords.longitude
         let latlng = "ll=" + String(lat) + "," + String(lng);
@@ -33,31 +33,6 @@ export default class YelpAPI{
             .catch(err => console.error(err));
     }
 
-    get(){
-        this.search( yelpData => {
-            console.log('getting yelp data', yelpData);
-            yelpData = ds.cloneWithRows(yelpData);
-            this.setState({yelpData});
 
-        });
-    }
 
-    renderYelpList(data, i){
-        return(
-            <View style={styles.item} key={i}>
-                <Image
-                    style={{width: 50, height: 50}}
-                    source={{uri: data.image_url}}
-                />
-                <Text style={styles.business}>{data.name}</Text>
-            </View>
-        );
-    }
-
-    getList(){
-        return (<ListView
-            dataSource={this.state.yelpData}
-            renderRow={this.renderYelpData.bind(this)}
-        />)
-    }
 }

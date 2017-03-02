@@ -45,11 +45,7 @@ export default class HomeQuickSettings extends Component {
 
 const styles = StyleSheet.create({
     setPosition: {
-        position: 'absolute',
         padding: 10,
-        bottom: 20,
-        left: 10,
-        right: 10,
         flexDirection: 'row',
         justifyContent: 'space-around'
     },

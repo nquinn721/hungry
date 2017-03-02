@@ -16,7 +16,8 @@ export default class Header extends Component {
             <View style={styles.setPosition}>
                 <Icon name="navicon" size={20} color="white"/>
                 <Text style={styles.text}>Hungry?</Text>
-                <Icon name="comments" size={20} color="white"/>
+                <Text></Text>
+                {/*<Icon name="comments" size={20} color="white"/>*/}
             </View>
 
         );
@@ -25,17 +26,13 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
     setPosition: {
-        position: 'absolute',
-        height: 60,
-        top: 0,
-        left: 0,
-        right: 0,
         paddingTop: 30,
         paddingLeft: 10,
         paddingRight: 10,
         justifyContent: 'space-between',
         backgroundColor: '#f39c12',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        paddingBottom: 10
     },
     text: {
         color: 'white',

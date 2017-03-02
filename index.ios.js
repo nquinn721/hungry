@@ -14,27 +14,16 @@ import Home from './app/components/home';
 import MainMenu from './app/components/mainMenu';
 import SideMenu from 'react-native-side-menu';
 
-class Menu extends Component{
-    render(){
-        return(
-            <View>
-                <Text>Menu</Text>
-            </View>
-        );
-    }
-}
 
 export default class Hungry extends Component {
     navigate(route, navigator){
         switch(route.id){
             case 'Home':
                 return(<Home navigator={navigator} />);
-            case 'MainMenu':
-                return(<MainMenu navigator={navigator}/>);
         }
     }
     render() {
-        const menu = <Menu navigator={navigator}/>;
+        // const menu = <Menu navigator={navigator}/>;
 
         return (
             <View style={styles.container}>
@@ -42,9 +31,6 @@ export default class Hungry extends Component {
                     backgroundColor="blue"
                     barStyle="light-content"
                 />
-                <SideMenu menu={menu}>
-                    <ContentView/>
-                </SideMenu>
                 <Navigator
                     initialRoute={{id: 'Home'}}
                     renderScene={this.navigate}
@@ -55,21 +41,14 @@ export default class Hungry extends Component {
     }
 }
 
-class ContentView extends Component {
+class Application extends Component {
     render() {
+        const menu = <Menu navigator={navigator}/>;
+
         return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    Welcome to React Native!
-                </Text>
-                <Text style={styles.instructions}>
-                    To get started, edit index.ios.js
-                </Text>
-                <Text style={styles.instructions}>
-                    Press Cmd+R to reload,{'\n'}
-                    Cmd+Control+Z for dev menu
-                </Text>
-            </View>
+            <SideMenu menu={menu}>
+                <ContentView/>
+            </SideMenu>
         );
     }
 }

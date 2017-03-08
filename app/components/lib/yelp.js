@@ -22,7 +22,7 @@ export default class YelpAPI{
         let request = oauth.sign({
             action: "GET",
             path: "https://api.yelp.com/v2/search",
-            parameters: "term=fast food&" + latlng,
+            parameters: "term=happy hour&hours&" + latlng,
             signatures: {api_key: consumerKey, shared_secret: consumerSecret, access_token: token,
                 access_secret: tokenSecret},
         });

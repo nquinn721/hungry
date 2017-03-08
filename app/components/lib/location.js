@@ -8,7 +8,7 @@ export default class Location{
                 cb(position);
             },
             (error) => console.log(error),
-            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+            // {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
 
         );
     }

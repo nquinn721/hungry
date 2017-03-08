@@ -22,7 +22,13 @@ export default class Settings{
             list: ['Daily', 'Work Wednesday']
         },
         customMealCategories: [],
-        foodInterests: ['spanish', 'italian', 'american', 'indian', 'chinese', 'japanese']
+        foodInterests: ['spanish', 'italian', 'american', 'indian', 'chinese', 'japanese'],
+
+
+        //Item Management
+        removeItemAfterShake: true,
+        refreshItemsWhenListExhausted: true,
+        refreshItemsOnInterval: false
     }
 
 
@@ -39,15 +45,16 @@ export default class Settings{
 
         cat.current = list[m];
 
-
+        this.logChangedSetting(category, current, cat.current);
         this.update();
         return cat.current;
     }
 
-
+    static logChangedSetting(setting, before, after){
+        Server.log({type: 'Update ' + setting, values: [before, after]});
+    }
     static update(){
         Store.set('settings', this.settings);
-        Server.log('Update Settings', this.settings);
     }
 
     static get(){

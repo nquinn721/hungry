@@ -6,7 +6,6 @@ const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 export default class Restaurants extends Component {
     constructor(){
         super();
-
         this.state = {
             renderedData: <Text>Render</Text>
 
@@ -15,7 +14,9 @@ export default class Restaurants extends Component {
         this.get();
     }
     get() {
+
         YelpAPI.search(yelpData => {
+            console.log(yelpData);
             if(yelpData){
                 yelpData = ds.cloneWithRows(yelpData);
                 this.setState({yelpData});

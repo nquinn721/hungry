@@ -8,11 +8,13 @@ export default class List{
         this.defaultItems = items;
     }
 
-    removeItem(item){
+    getItem(item){
+        var i;
         if(typeof item === 'Object')
-            this.items.splice(this.items.indexOf(item), 1);
+            i = this.items.splice(this.items.indexOf(item), 1);
         else
-            this.items.splice(item, 1);
+            i = this.items.splice(item, 1);
+        return i;
     }
 
     reset(){

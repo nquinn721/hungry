@@ -10,8 +10,7 @@ import Feedback from './homeViews/feedback';
 import Restaurants from './homeViews/restaurants';
 
 
-
-new Settings();
+new Restaurants();
 
 export default class Home extends Component {
     constructor(props){

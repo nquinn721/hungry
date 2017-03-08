@@ -8,13 +8,22 @@ export default class Feedback extends Component {
     }
     render(){
         return(
-            <View>
-                <Text>Feed Back</Text>
+            <View style={styles.viewArea}>
+                <Text style={styles.mainText}>Feed Back</Text>
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
+    mainText: {
+        color: 'white',
+        fontSize: 20
+    },
+    viewArea: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
 });
 AppRegistry.registerComponent('Feedback', () => Feedback);

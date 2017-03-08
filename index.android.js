@@ -10,7 +10,7 @@ import {
     TouchableHighlight
 } from 'react-native';
 import Home from './app/components/home';
-
+console.log('RUNNING');
 export default class Hungry extends Component {
   navigate(route, navigator){
     switch(route.id){

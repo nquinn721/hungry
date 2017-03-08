@@ -28,7 +28,6 @@ export default class Settings{
 
 
     static getNext(category){
-        console.log(category);
         let cat = this.settings[category];
         let list = cat.list;
         let current = cat.current;
@@ -42,7 +41,6 @@ export default class Settings{
 
 
         this.update();
-        console.log(this.settings[category]);
         return cat.current;
     }
 

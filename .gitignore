@@ -23,7 +23,8 @@ DerivedData
 project.xcworkspace
 node_modules
 .idea
-
+server/.git
+server/node_modules
 
 # Android/IntelliJ
 #

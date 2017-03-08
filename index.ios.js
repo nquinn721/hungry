@@ -23,7 +23,6 @@ export default class Hungry extends Component {
         }
     }
     render() {
-        // const menu = <Menu navigator={navigator}/>;
 
         return (
             <View style={styles.container}>
@@ -41,17 +40,6 @@ export default class Hungry extends Component {
     }
 }
 
-class Application extends Component {
-    render() {
-        const menu = <Menu navigator={navigator}/>;
-
-        return (
-            <SideMenu menu={menu}>
-                <ContentView/>
-            </SideMenu>
-        );
-    }
-}
 
 
 const styles = StyleSheet.create({

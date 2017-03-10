@@ -13,8 +13,8 @@ export default class Server{
         device: new Device
     };
 
-    log(event, data){
-        data.time = new Date.now();
+    static log(event, data){
+        data.time = Date.now();
 
         if(typeof this.logs[event] === 'object')
             this.logs[event].push(data);

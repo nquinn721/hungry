@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import {AppRegistry, Dimensions, StyleSheet, Text, Slider, View, Animated, TouchableHighlight} from 'react-native';
 import HomeQuickSettings from './homeQuickSettings';
 import Header from './header';
-import Settings from './lib/settings';
-import SubHeader from './subHeader';
 import Shake from './homeViews/shake';
 import { TabViewAnimated, TabBar } from 'react-native-tab-view';
 import Feedback from './homeViews/feedback';
 import Restaurants from './homeViews/restaurants';
+import State from './state';
 
-
-new Restaurants();
 
 export default class Home extends Component {
     constructor(props){

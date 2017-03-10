@@ -23,15 +23,10 @@ export default class State extends Component {
 
         if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
             console.log('App has come to the foreground!');
-            if(!this.sendToServerTimeout)
-                this.sendToServerTimeout = setTimeout(()=> {
-                        console.log('about to send');
-                        // Server.send({state: 'App opened'})
-                    }, 1000
-                );
+            Server.openApp();
         }else{
-            // if(!this.sendToServerTimeout)
-            //     this.sendToServerTimeout = setTimeout(()=> Server.send({state: 'App closed'}), 1000);
+            console.log('closing app');
+            Server.closeApp();
         }
         this.setState({appState: nextAppState});
     }

@@ -1,4 +1,5 @@
 import OAuthSimple from 'oauthsimple';
+import List from './list';
 
 const consumerKey = "I4GxmlxAqwODPSTfPHR36g";
 const consumerSecret = "KAbm1Ixn2Ghtw7KVLY7xzirdt10";
@@ -29,7 +30,7 @@ export default class YelpAPI{
 
         fetch(request.signed_url)
             .then(data => data.json())
-            .then(data => cb(data.businesses))
+            .then(data => cb(new List(data.businesses)))
             .catch(err => console.error(err));
     }
 

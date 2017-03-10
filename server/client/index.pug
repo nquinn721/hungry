@@ -1,0 +1,42 @@
+doctype html
+html(ng-app="app")
+    head
+        title Hungry?
+        link(href="css/lib/bootstrap.css", rel="stylesheet")
+    body(ng-controller="main as main")
+        h1 Welcome to hungry!
+        table.table.table-striped
+            thead
+                tr
+                    th id
+                    th username
+                    th password
+                    th firstName
+                    th lastName
+                    th race
+                    th sex
+                    th age
+                    th deviceInfo
+                    th createdBy
+                    th createdAt
+                    th updatedAt
+                    th deletedAt
+            tbody
+                tr(ng-repeat="user in main.users")
+                    td {{user.id}}
+                    td {{user.username}}
+                    td {{user.password}}
+                    td {{user.firstName}}
+                    td {{user.lastName}}
+                    td {{user.race}}
+                    td {{user.sex}}
+                    td {{user.age}}
+                    td {{user.deviceInfo}}
+                    td {{user.createdBy}}
+                    td {{user.createdAt}}
+                    td {{user.updatedAt}}
+                    td {{user.deletedAt}}
+        script(src="js/lib/jquery.js")
+        script(src="js/lib/bootstrap.js")
+        script(src="js/lib/angular.js")
+        script(src="js/main.js")

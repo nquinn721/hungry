@@ -1,3 +1,4 @@
+import Random from './random';
 
 export default class List{
     items;
@@ -6,6 +7,10 @@ export default class List{
     constructor(items){
         this.items = items;
         this.defaultItems = items;
+    }
+
+    random(){
+        return this.getItem(Random.randomNumber(this.items.length));
     }
 
     getItem(item){

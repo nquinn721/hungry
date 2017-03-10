@@ -1,22 +1,28 @@
-import Settings from './settings';
 import Device from './device';
 
 // Class used to update remote server with user data
 export default class Server{
-    static logs = [];
-    static device = new Device;
+    static initiated = false;
+    static dev = true;
+    static logs = {
+        activity: [],
+        user: null,
+        restaurants: null,
+        settings: null,
+        locations: [],
+        device: new Device
+    };
 
-    static log(data){
-        console.log('device', this.device);
-        this.logs.push(data);
+    log(event, data){
+        data.time = new Date.now();
 
-        // this.send()
+        if(typeof this.logs[event] === 'object')
+            this.logs[event].push(data);
+        else this.logs[event] = data;
     }
 
-
     static send(data){
-        console.log('SENDING MOFO');
-        fetch('https://hungryserver.herokuapp.com/server-dump', {
+        fetch(this.dev ? 'localhost:3000/server-dump' : 'https://hungryserver.herokuapp.com/server-dump', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

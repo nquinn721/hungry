@@ -1,6 +1,6 @@
 import Store from './store';
 import Server from './server';
-
+// console.log(Server);
 
 export default class Settings{
 
@@ -51,7 +51,8 @@ export default class Settings{
     }
 
     static logChangedSetting(setting, before, after){
-        Server.log({type: 'Update ' + setting, values: [before, after]});
+        Server.log('activity', {type: 'Update ' + setting, values: [before, after]});
+        Server.log('settings', this);
     }
     static update(){
         Store.set('settings', this.settings);

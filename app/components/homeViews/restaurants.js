@@ -11,6 +11,8 @@ export default class Restaurants extends Component {
 
         }
 
+    }
+    componentDidMount(){
         this.get();
     }
     get() {

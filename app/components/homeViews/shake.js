@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {AppRegistry, StyleSheet, Text, View, Animated, TouchableHighlight} from 'react-native';
+import RNShakeEvent from 'react-native-shake-event';
 
 export default class Shake extends Component {
     constructor(){
@@ -8,6 +9,10 @@ export default class Shake extends Component {
         this.state = {
             shakeme: 'Shake Me!'
         }
+
+        RNShakeEvent.addEventListener('shake', function(){
+            console.log('shook device');
+        });
     }
     render(){
         return(

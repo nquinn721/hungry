@@ -19,6 +19,6 @@ export default class Device{
     deviceCountry = DeviceInfo.getDeviceCountry();
     timezone = DeviceInfo.getTimezone();
     instanceID = DeviceInfo.getInstanceID();
-    mulator = DeviceInfo.isEmulator();
-    ablet = DeviceInfo.isTablet();
+    isEmulator = DeviceInfo.isEmulator();
+    isTablet = DeviceInfo.isTablet();
 }

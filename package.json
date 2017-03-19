@@ -10,7 +10,7 @@
     "oauthsimple": "0.0.1",
     "react": "~15.4.0",
     "react-native": "0.41.2",
-    "react-native-device-info": "^0.9.9",
+    "react-native-device-info": "^0.10.1",
     "react-native-shake-event": "^3.0.0",
     "react-native-side-menu": "^0.20.1",
     "react-native-storage": "^0.1.5",

@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.jadsonlourenco.RNShakeEvent.RNShakeEventPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;

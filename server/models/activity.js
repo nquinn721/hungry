@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-module.exports = mongoose.model('Activity', {
+global.Activity = mongoose.model('Activity', {
     userId: String,
     activity: Object
 });

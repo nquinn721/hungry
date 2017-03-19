@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-module.exports = mongoose.model('Restaurants', {
+global.Restaurants = mongoose.model('Restaurants', {
     userId: String,
     lists: Object
 });

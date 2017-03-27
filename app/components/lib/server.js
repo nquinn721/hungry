@@ -23,7 +23,6 @@ export default class Server{
             this.logs[event].push(data);
         else this.logs[event] = data;
 
-        this.send();
     }
 
     static openApp(){
@@ -50,30 +49,23 @@ export default class Server{
             .then(res => res);
     }
 
-    static send(data){
-        // fetch(this.url + 'server-dump', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(data || {settings: this.logs.settings, logs: this.logs})
-        // });
-    }
+
     static connect(){
-        this.fetch('connect', this.logs.device.id);
+        this.post('connect', this.logs.device.id);
     }
     static disconnect(){
-        this.fetch('disconnect', this.logs.device.id);
+        this.post('disconnect', this.logs.device.id);
     }
     static post(endpoint, data){
+        var d = JSON.stringify({data});
+        console.log(this.url + endpoint, d);
         return fetch(this.url + endpoint, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: typeof data === 'object' ? JSON.stringify(data) : data
+            body: typeof data === 'object' ? JSON.stringify(data) : d
         });
     }
 }

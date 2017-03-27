@@ -1,0 +1,14 @@
+.success-circle{
+    border-radius:100%;
+    background:green;
+
+    width:10px;
+    height:10px;
+}
+.fail-circle{
+    border-radius:100%;
+    background:red;
+
+    width:10px;
+    height:10px;
+}

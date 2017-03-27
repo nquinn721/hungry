@@ -10,4 +10,17 @@ module.exports = function (prod) {
         err && console.log(err);
     });
 
+
+    return {
+        login: (req, id) =>  {req.session.user = id; io.sockets.emit('login', id)},
+        loginOrCreate: user =>
+            DB.getUesr(user.id, user => {
+                if (user) DB.login(req, user.id);
+                else DB.createUser(body, user => DB.login(req, user.id));
+            }),
+        getUesr: (id, cb) => User.findOne({id}, (e, u) => cb && cb(u)),
+        createUser: (userData, cb) => new User({id: userData.id, deviceInfo: userData}).save(cb || function(){})
+    }
+
 }
+

@@ -17,7 +17,9 @@ html(ng-app="app")
                     tr(ng-repeat="user in main.users")
                         td {{user.id}}
                         td {{user.createdAt}}
-                        td {{user.connected}}
+                        td
+                            div.success-circle(ng-if="user.connected")
+                            div.fail-circle(ng-if="!user.connected")
         script(src="/socket.io/socket.io.js")
         script(src="js/lib/jquery.js")
         script(src="js/lib/bootstrap.js")

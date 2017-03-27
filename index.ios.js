@@ -11,8 +11,6 @@ import {
     TouchableHighlight
 } from 'react-native';
 import Home from './app/components/home';
-import MainMenu from './app/components/mainMenu';
-import SideMenu from 'react-native-side-menu';
 
 
 export default class Hungry extends Component {

@@ -8,7 +8,6 @@ import Feedback from './homeViews/feedback';
 import Restaurants from './homeViews/restaurants';
 import State from './state';
 
-
 export default class Home extends Component {
     constructor(props){
         super(props);
@@ -23,15 +22,19 @@ export default class Home extends Component {
         };
     }
 
-    _handleChangeTab = (index) => {
+    _handleChangeTab(){
+
+    }
+
+    _handleChangeTab(index) {
         this.setState({ index });
     };
 
-    _renderHeader = (props) => {
+    _renderHeader(props){
         return <TabBar {...props} indicatorStyle={styles.tabBorder} />;
     };
 
-    _renderScene = ({ route }) => {
+    _renderScene({ route }) {
         switch (route.key) {
             case '1':
                 return <Shake view={this}/>;

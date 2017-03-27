@@ -13,12 +13,13 @@ module.exports = function (prod) {
 
     return {
         login: (req, id) =>  {req.session.user = id; io.sockets.emit('login', id)},
-        loginOrCreate: user =>
-            DB.getUesr(user.id, user => {
-                if (user) DB.login(req, user.id);
-                else DB.createUser(body, user => DB.login(req, user.id));
-            }),
-        getUesr: (id, cb) => User.findOne({id}, (e, u) => cb && cb(u)),
+        loginOrCreate: function(req, user) {
+            this.getUser(user.id, user => {
+                if (user) this.login(req, user.id);
+                else this.createUser(body, user => DB.login(req, user.id));
+            })
+        },
+        getUser: (id, cb) => User.findOne({id}, (e, u) => cb && cb(u)),
         createUser: (userData, cb) => new User({id: userData.id, deviceInfo: userData}).save(cb || function(){})
     }
 

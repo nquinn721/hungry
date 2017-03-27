@@ -55,7 +55,7 @@ app.post('/server-dump', function (req, res) {
 });
 app.post('/login', function(req, res){
     var body = req.body;
-    DB.loginOrCreate(body);
+    DB.loginOrCreate(req, body);
 });
 
 app.post('/connect', function (req, res) {

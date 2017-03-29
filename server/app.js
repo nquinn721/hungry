@@ -55,15 +55,23 @@ app.post('/server-dump', function (req, res) {
 });
 app.post('/login', function(req, res){
     var body = req.body;
-    DB.loginOrCreate(req, body);
+    // DB.loginOrCreate(req, body);
+    // res.send('success');
+    res.status(500).send('Something broke!')
 });
 
 app.post('/connect', function (req, res) {
     console.log('connect');
     console.log('APP OPEN', req.body);
+    res.send('connected');
 });
 app.post('/disconnect', function (req, res) {
     console.log('APP CLOSED', req.body);
+    res.send('disconnected');
+});
+app.post('/server-reconnect', function (req, res) {
+    console.log('server reconnect', req.body);
+    res.send('reconnected');
 });
 
 

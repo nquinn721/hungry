@@ -7,7 +7,6 @@ import { TabViewAnimated, TabBar } from 'react-native-tab-view';
 import Feedback from './homeViews/feedback';
 import Restaurants from './homeViews/restaurants';
 import State from './state';
-
 export default class Home extends Component {
     constructor(props){
         super(props);
@@ -52,6 +51,7 @@ export default class Home extends Component {
         return (
             <View style={styles.container}>
                 <Header style={styles.header}/>
+                <State/>
                 <TabViewAnimated
                     style={styles.mainView}
                     navigationState={this.state}

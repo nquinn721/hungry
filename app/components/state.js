@@ -9,25 +9,21 @@ export default class State extends Component {
     }
 
     componentDidMount() {
-        console.log('componetn did mount');
         AppState.addEventListener('change', this._handleAppStateChange);
+        this.timeInApp = Date.now();
     }
 
     componentWillUnmount() {
-        console.log('component will unmount');
         AppState.removeEventListener('change', this._handleAppStateChange);
+        this.timeInApp = Date.now() - this.timeInApp;
     }
 
     _handleAppStateChange = (nextAppState) => {
         clearTimeout(this.sendToServerTimeout);
         this.sendToServerTimeout = null;
-        console.log('HANDLE APP STATE');
-        console.log(nextAppState);
         if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
-            console.log('App has come to the foreground!');
             Server.openApp();
         }else{
-            console.log('closing app');
             Server.closeApp();
         }
         this.setState({appState: nextAppState});

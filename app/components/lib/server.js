@@ -6,8 +6,9 @@ import Device from './device';
 export default class Server{
     static initiated = false;
     static dev = true;
-    static saveIntervals = false;
-    static dataToSendOnReconnect = {};
+    static saveInterval = false;
+    static resendInterval = 100 * 60;
+    static dataWaiting;
     static logs = {
         activity: [],
         user: null,
@@ -48,21 +49,29 @@ export default class Server{
 
     static login(){
         this.appOpen = true;
-        this.post('login', this.logs.device);
+        // this.post('login');
     }
 
 
     static connect(){
-        this.post('connect', this.logs.device.id);
-    }
-    static disconnect(){
-        this.post('disconnect', this.logs.device.id);
-    }
-    static post(endpoint, data, interval){
-        var d = JSON.stringify({data}),
-            self = this;
+        if(!this.appOpen){
+            this.logs.activity.push({type: 'connect', time: Date.now()});
+            this.post('connect', this.logs.activity);
+            this.appOpen = true;
+        }
 
-        d = typeof data === 'object' ? JSON.stringify(data) : d;
+    }
+    static disconnect(timeInApp){
+        // if(this.appOpen){
+        //     this.logs.activity.push({type: 'disconnect', time: Date.now()});
+        //     this.post('disconnect');
+        //     this.appOpen = false;
+        // }
+
+    }
+    static post(endpoint, data){
+        data = this.dataWaiting || data || this.logs;
+        console.log(data);
 
         console.log('SENDING');
         return fetch(this.url + endpoint, {
@@ -71,29 +80,23 @@ export default class Server{
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: d
+            body: JSON.stringify(data)
         })
             .then(res => {
                 console.log('SERVER RESPONDED');
-                if(interval){
-                    clearInterval(self.saveIntervals);
-                    delete self.saveIntervals;
-                    this.dataToSendOnReconnect = {};
-                }
+                clearInterval(this.saveInterval);
+                delete this.saveInterval;
+                delete this.dataWaiting;
             })
-            .catch(res => this.storePostUntilReconnect(endpoint, d, interval));
+            .catch(res => this.storePostUntilReconnect(data));
 
     }
 
-    static storePostUntilReconnect(endpoint, data, interval){
-        var self = this;
-        interval = interval || Date.now();
-
-        if(endpoint !== 'server-reconnect')
-            this.dataToSendOnReconnect[interval] = {endpoint, data, interval};
-
-        if(!this.saveIntervals)
-            this.saveIntervals = setInterval(() => this.post('server-reconnect', this.dataToSendOnReconnect, true), 100 * 60);
+    static storePostUntilReconnect(data){
+        console.log('storPost')
+        this.dataWaiting = data;
+        if(!this.saveInterval)
+            this.saveInterval = setInterval(() => this.post('server-reconnect', null, true), this.resendInterval);
 
     }
 }
